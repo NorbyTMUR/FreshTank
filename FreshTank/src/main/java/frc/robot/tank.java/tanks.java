@@ -33,46 +33,49 @@ public class tanks {
 
     left1 = new PWMVictorSPX(0);
 
-    public drivetrain(){
+    public void drivetrain(){
         left1 = new PWMVictorSPX(0);
-        addChild("left1",left1);
-        motor.setInverted(false);
+        //addChild("left1",left1);
+        left1.setInverted(false);
 
         left2 = new PWMVictorSPX(1);
-        addChild("left2",left2);
-        motor.setInverted(false);
+        //addChild("left2",left2);
+        left2.setInverted(false);
 
         leftMotor = new MotorControllerGroup(left1, left2);
-        addChild("leftMotor", leftMotor);
+        //addChild("leftMotor", leftMotor);
 
         right1 = new PWMVictorSPX(2);
-        addChild("right1",right1);
-        motor.setInverted(false);
+        //addChild("right1",right1);
+        right1.setInverted(false);
 
         right2 = new PWMVictorSPX(3);
-        addChild("right2",right2);
-        motor.setInverted(false);
+        //addChild("right2",right2);
+        right2.setInverted(false);
 
         rightMotor = new MotorControllerGroup(right1, right2);
-        addChild("rightMotor", rightMotor);
+        //addChild("rightMotor", rightMotor);
 
 
     }
     
-    public periodicInit(){
-    
+    public void robotInit(){
+        
+        public DifferentialDrive m_robotDrive = new DifferentialDrive(leftMotor::set, rightMotor::set);
+        public Joystick m_leftStick = new Joystick(0);
+        public Joystick m_rightStick = new Joystick(1);
     }
 
-    public setSpeed(, double speed){
-        motorID.set(speed);
+    public void setSpeed(PWMVictorSPX motor, double speed){
+        motor.set(speed);
     }
 
-    public setVoltage(int motorID, double voltage){
-        motorID.setVoltage(voltage);
+    public void setVoltage(PWMVictorSPX motor, double voltage){
+        motor.setVoltage(voltage);
     }
 
-    public void periodic(){
-
+    public void teleopPeriodic(){
+        m_robotDrive.tankDrive(-m_leftStick.getY(), -m_rightStick.getY());
     }
 
     public void simulationPeriodic(){
