@@ -68,6 +68,7 @@ public class Robot extends TimedRobot {
         break;
       case kDefaultAuto:
       default:
+
         // Put default auto code here
         break;
     }
@@ -77,13 +78,15 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopInit() {
     tanks tank = new tanks();
-    
-
+    tank.drivetrain();
+    tank.setSpeed(0.1,1);
   }
 
   /** This function is called periodically during operator control. */
   @Override
-  public void teleopPeriodic() {}
+  public void teleopPeriodic() {
+    
+  }
 
   /** This function is called once when the robot is disabled. */
   @Override
