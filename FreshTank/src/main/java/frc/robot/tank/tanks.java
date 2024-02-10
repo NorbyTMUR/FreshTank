@@ -19,6 +19,7 @@ import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 import edu.wpi.first.wpilibj.motorcontrol.PWMVictorSPX;
 
 
+
 public class tanks {
 
     private PWMVictorSPX left1;
@@ -42,8 +43,8 @@ public class tanks {
         m_rightStick = new Joystick(1);
     }
     
-
-    public void drivetrain(){
+    
+    public void init(){
         left1 = new PWMVictorSPX(0);
         //addChild("left1",left1);
         left1.setInverted(false);
@@ -110,8 +111,14 @@ public class tanks {
     }
 
     //default 2 and 0.7
-    public void curveFollower(double b, double zeta){
-        // RamseteController rc = new RamseteController();
-        // rc.calculate()
+    /**
+     * 
+     * @param b - Tuning parameter (b > 0 rad²/m²) for which larger values make convergence more aggressive like a proportional term.
+     * @param zeta Tuning parameter (0 rad⁻¹ < zeta < 1 rad⁻¹) for which larger values provide more damping in response.
+     */
+    public void curveFollower(double b, double zeta, Pose2d desiredPose){
+        ChassisSpeeds speed = new ChassisSpeeds();
+        RamseteController rc = new RamseteController();
+        speed.calculate(Pigeon2.currentPose(),;
     }
 }

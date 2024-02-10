@@ -29,6 +29,7 @@ public class Robot extends TimedRobot {
     m_chooser.setDefaultOption("Default Auto", kDefaultAuto);
     m_chooser.addOption("My Auto", kCustomAuto);
     SmartDashboard.putData("Auto choices", m_chooser);
+
   }
 
   /**
@@ -77,15 +78,13 @@ public class Robot extends TimedRobot {
   /** This function is called once when teleop is enabled. */
   @Override
   public void teleopInit() {
-    tanks tank = new tanks();
-    tank.drivetrain();
-    tank.setSpeed(0.1,1);
+    Tank.init();
   }
 
   /** This function is called periodically during operator control. */
   @Override
   public void teleopPeriodic() {
-    
+      Tank.drive();
   }
 
   /** This function is called once when the robot is disabled. */
