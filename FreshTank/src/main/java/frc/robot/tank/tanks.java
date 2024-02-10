@@ -27,14 +27,20 @@ public class tanks {
     private PWMVictorSPX right2;
     private MotorControllerGroup rightMotor;
     private DifferentialDrive drive;
+    private DifferentialDrive m_robotDrive;
+    private Joystick m_leftStick;
+    private Joystick m_rightStick;
     //private Encoder leftencoder;
     //private Encoder rightencoder;
-    private AnalogGyro gyro;
+    //private AnalogGyro gyro;    
 
+    public tanks(){
+        m_robotDrive = new DifferentialDrive(leftMotor, rightMotor);
+        m_leftStick = new Joystick(0);
+        m_rightStick = new Joystick(1);
+    }
+    
 
-    left1 = new PWMVictorSPX(0);
-
-   
     public void drivetrain(){
         left1 = new PWMVictorSPX(0);
         //addChild("left1",left1);
@@ -60,24 +66,13 @@ public class tanks {
 
         drive.setMaxOutput(1.0);
         drive.setSafetyEnabled(true);
-
-       
-
-    }
-    
-    
-    
-    public void init(){
-        
-        public DifferentialDrive m_robotDrive = new DifferentialDrive(leftMotor, rightMotor);
-        public Joystick m_leftStick = new Joystick(0);
-        public Joystick m_rightStick = new Joystick(1);
     }
 
  
     public void setSpeed(double vx, double angularVel){
 
         DifferentialDriveKinematics kinematics =
+        //takes trackwidth as a parameter
         new DifferentialDriveKinematics(Units.inchesToMeters(27.0));
 
         var speed = new ChassisSpeeds(vx, 0.0, angularVel);
@@ -93,6 +88,7 @@ public class tanks {
 
     }
 
+    //move to point method for auto 
     public void setVoltage(double rightVolts, double leftVolts){
         leftMotor.setVoltage(leftVolts);
         rightMotor.setVoltage(rightVolts);
