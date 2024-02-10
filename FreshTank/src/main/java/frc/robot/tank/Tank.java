@@ -19,6 +19,7 @@ public class Tank {
         rightBack = new VictorSPX(6);
         rightFront = new VictorSPX(10);
         Driverstick = new Joystick(0);
+        
         leftSpeed=0;
         rightSpeed = 0;
     }
@@ -26,7 +27,6 @@ public class Tank {
     /**former params: double leftSpeed, double rightSpeed*/
 
     public static void drive() {
-        
         leftSpeed = Driverstick.getRawAxis(0);
         rightSpeed = Driverstick.getRawAxis(4);
 
