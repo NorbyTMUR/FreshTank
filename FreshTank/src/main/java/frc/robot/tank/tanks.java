@@ -1,5 +1,6 @@
 package frc.robot.tank;
 
+import edu.wpi.first.math.controller.RamseteController;
 //import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 //import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.math.kinematics.ChassisSpeeds;
@@ -36,6 +37,7 @@ public class tanks {
 
     public tanks(){
         m_robotDrive = new DifferentialDrive(leftMotor, rightMotor);
+        drive = new DifferentialDrive(leftMotor, rightMotor);
         m_leftStick = new Joystick(0);
         m_rightStick = new Joystick(1);
     }
@@ -60,6 +62,7 @@ public class tanks {
         right2 = new PWMVictorSPX(3);
         //addChild("right2",right2);
         right2.setInverted(false);
+
 
         rightMotor = new MotorControllerGroup(right1, right2);
         //addChild("rightMotor", rightMotor);
@@ -108,6 +111,7 @@ public class tanks {
 
     //default 2 and 0.7
     public void curveFollower(double b, double zeta){
-        
+        // RamseteController rc = new RamseteController();
+        // rc.calculate()
     }
 }
