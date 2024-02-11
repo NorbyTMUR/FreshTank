@@ -2,6 +2,7 @@ package frc.robot.tank;
 
 import com.ctre.phoenix.motorcontrol.VictorSPXControlMode;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
+import edu.wpi.first.math.controller.RamseteController;
 
 import edu.wpi.first.wpilibj.Joystick;
 
@@ -27,13 +28,23 @@ public class Tank {
     /**former params: double leftSpeed, double rightSpeed*/
 
     public static void drive() {
-        leftSpeed = Driverstick.getRawAxis(0);
-        rightSpeed = Driverstick.getRawAxis(4);
-
+        leftSpeed = Driverstick.getRawAxis(1);
+        rightSpeed = Driverstick.getRawAxis(6);
+        
         leftBack.set(VictorSPXControlMode.PercentOutput, leftSpeed);
         leftFront.set(VictorSPXControlMode.PercentOutput, leftSpeed);
         rightBack.set(VictorSPXControlMode.PercentOutput, rightSpeed);
         rightFront.set(VictorSPXControlMode.PercentOutput, rightSpeed);
+    }
+
+    public static void driveToPoint(double x, double y){
+        double angle = Math.atan2(y,x);
+        //since pi/2 is apparently straight forwards??
+        double currentAngle = Math.PI/2 - 
+    }
+
+    public static void groupMotors(VictorSPX motor1, VictorSPX motor2){
+        motor1.follow(motor2);
     }
 
 }
