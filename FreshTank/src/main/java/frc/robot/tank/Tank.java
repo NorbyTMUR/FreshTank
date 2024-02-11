@@ -47,4 +47,12 @@ public class Tank {
         motor1.follow(motor2);
     }
 
+    //returns currentX, currentY, currentHeading, by faking odometry 
+    //(integrating velocity over an interval of time using a time-recording class 
+    // To-Do: (FIGURE OUT time-recording class - download?), FIGURE OUT HOW TO INCORPORATE ANGLE/jeading into the calculations.
+    //in auto, we could probably clear position every frame to reduce the error.
+    public Double[] currentPosition(){
+
+    }
+
 }
