@@ -47,13 +47,19 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousInit() {
-
+    Tank.currentPosition(0,0,0);
+    
   }
   //teleop
 
   /** This function is called periodically during autonomous. */
   @Override
   public void autonomousPeriodic() {
+    //figure out how to get currentPosition from previous frame, idk
+    Tank.currentPosition();
+    //double currentX = Tank.currentPosition[0];
+    //double currentY = Tank.currentPosition[1];
+    //double currentTheta = Tank.currentPosition[2];
   }
 
   /** This function is called once when teleop is enabled. */

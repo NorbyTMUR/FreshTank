@@ -3,6 +3,7 @@ package frc.robot.tank;
 import com.ctre.phoenix.motorcontrol.VictorSPXControlMode;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import edu.wpi.first.math.controller.RamseteController;
+import edu.wpi.first.wpilibj.Timer;
 
 import edu.wpi.first.wpilibj.Joystick;
 
@@ -12,6 +13,8 @@ public class Tank {
     public static Joystick Driverstick;
     public static double leftSpeed;
     public static double rightSpeed;
+     // trackwidth; inches
+    public static double l = 27;
 
     public static void init(){
         leftBack = new VictorSPX(1);
@@ -23,6 +26,10 @@ public class Tank {
         
         leftSpeed=0;
         rightSpeed = 0;
+
+        double omega = 0;
+       
+
     }
 
     /**former params: double leftSpeed, double rightSpeed*/
@@ -40,7 +47,7 @@ public class Tank {
     public static void driveToPoint(double x, double y){
         double angle = Math.atan2(y,x);
         //since pi/2 is apparently straight forwards??
-        double currentAngle = Math.PI/2 - 
+       // double currentAngle = Math.PI/2 - 
     }
 
     public static void groupMotors(VictorSPX motor1, VictorSPX motor2){
@@ -51,7 +58,13 @@ public class Tank {
     //(integrating velocity over an interval of time using a time-recording class 
     // To-Do: (FIGURE OUT time-recording class - download?), FIGURE OUT HOW TO INCORPORATE ANGLE/jeading into the calculations.
     //in auto, we could probably clear position every frame to reduce the error.
-    public Double[] currentPosition(){
+    //returns a double array in the form: [currentX, currentY, currentTheta]
+    public static double[] currentPosition(double previousX, double previousY, double previousTheta){
+        double omega;
+        double Vr;
+        double Vl;
+
+        omega = (Vr - Vl)/l;
 
     }
 
