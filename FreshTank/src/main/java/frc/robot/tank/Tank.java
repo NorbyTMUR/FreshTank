@@ -64,7 +64,7 @@ public class Tank {
         double Vr;
         double Vl;
 
-        omega = (Vr - Vl)/l;
+        omega = (Vl - Vr)/l;
 
     }
 
