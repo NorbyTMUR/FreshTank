@@ -6,9 +6,10 @@ import edu.wpi.first.math.controller.RamseteController;
 import edu.wpi.first.wpilibj.Timer;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.TimedRobot;
 
 
-public class Tank {
+public class Tank extends TimedRobot{
     public static VictorSPX leftBack, leftFront, rightBack, rightFront;
     public static Joystick Driverstick;
     public static double leftSpeed;
@@ -63,8 +64,11 @@ public class Tank {
         double omega;
         double Vr;
         double Vl;
+        double displacement;
 
         omega = (Vl - Vr)/l;
+
+        displacement = TimedRobot
 
     }
 
