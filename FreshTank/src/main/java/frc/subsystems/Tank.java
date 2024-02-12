@@ -16,6 +16,14 @@ public class Tank extends TimedRobot{
     public static double rightSpeed;
      // trackwidth; inches
     public static double l = 27;
+    public static double omega;
+    public static double Vr;
+    public static double Vl;
+    public static double displacement;
+    public static double currentX;
+    public static double currentY;
+    public static double currentTheta;
+    public static double[] newPosition = new double[3];
 
     public static void init(){
         leftBack = new VictorSPX(1);
@@ -61,15 +69,21 @@ public class Tank extends TimedRobot{
     //in auto, we could probably clear position every frame to reduce the error.
     //returns a double array in the form: [currentX, currentY, currentTheta]
     public static double[] currentPosition(double previousX, double previousY, double previousTheta){
-        double omega;
-        double Vr;
-        double Vl;
-        double displacement;
 
         omega = (Vl - Vr)/l;
 
-        displacement = TimedRobot
+        //omega cosTheta finds the x component of angular velocity omega.
+        currentX = previousX + omega*Math.cos(currentTheta);
+        currentY = previousY + omega*Math.sin(currentTheta);
+        //omega* timeBetweenNowAndTheLastFrame
+        currentTheta = previousTheta + (omega * TimedRobot.flskjljkf);
 
+        if(Vr == Vl){
+            //find the time between now and the last frame, idk how
+            currentY = previousY + (Vr * TimedRobot.kDefaultPeriod());
+        }
+        newPosition = [currentX, currentY, currentTheta];
+        return ;
     }
 
 }
