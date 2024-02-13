@@ -57,7 +57,7 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousPeriodic() {
     //figure out how to get currentPosition from previous frame, idk
-    Tank.currentPosition();
+    //Tank.currentPosition();
     //double currentX = Tank.currentPosition[0];
     //double currentY = Tank.currentPosition[1];
     //double currentTheta = Tank.currentPosition[2];
