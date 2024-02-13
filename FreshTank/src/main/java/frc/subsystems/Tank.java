@@ -37,7 +37,7 @@ public class Tank extends TimedRobot{
         rightSpeed = 0;
 
         double omega = 0;
-       
+        
 
     }
 
@@ -71,19 +71,22 @@ public class Tank extends TimedRobot{
     public static double[] currentPosition(double previousX, double previousY, double previousTheta){
 
         omega = (Vl - Vr)/l;
-
+        double[] newPosition = new double[3];
         //omega cosTheta finds the x component of angular velocity omega.
         currentX = previousX + omega*Math.cos(currentTheta);
         currentY = previousY + omega*Math.sin(currentTheta);
         //omega* timeBetweenNowAndTheLastFrame
-        currentTheta = previousTheta + (omega * TimedRobot.flskjljkf);
+        currentTheta = previousTheta + (omega * 30);
 
         if(Vr == Vl){
             //find the time between now and the last frame, idk how
-            currentY = previousY + (Vr * TimedRobot.kDefaultPeriod());
+            //difference between frames is 30 millisecs
+            currentY = previousY + (Vr * 30);
         }
-        newPosition = [currentX, currentY, currentTheta];
-        return ;
+        newPosition[0] = currentX;
+        newPosition[1] = currentY;
+        newPosition[2] = currentTheta;     
+        return newPosition;
     }
 
 }
