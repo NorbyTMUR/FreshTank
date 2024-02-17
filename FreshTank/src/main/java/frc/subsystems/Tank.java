@@ -1,10 +1,11 @@
 package frc.subsystems;
 
+
 import com.ctre.phoenix.motorcontrol.VictorSPXControlMode;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import edu.wpi.first.math.controller.RamseteController;
 import edu.wpi.first.wpilibj.Timer;
-
+import edu.wpi.first.wpilibj.motorcontrol.VictorSP;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TimedRobot;
 
@@ -29,7 +30,7 @@ public class Tank extends TimedRobot{
         leftBack = new VictorSPX(1);
         leftFront = new VictorSPX(5);
 
-        rightBack = new VictorSPX(6);
+        rightBack =new  VictorSPX(6);
         rightFront = new VictorSPX(10);
         Driverstick = new Joystick(0);
         
@@ -53,11 +54,11 @@ public class Tank extends TimedRobot{
         rightFront.set(VictorSPXControlMode.PercentOutput, rightSpeed);
     }
 
-    public static void driveToPoint(double x, double y){
-        double angle = Math.atan2(y,x);
+    /**public static void driveToPoint(double x, double y){
+        double angle = Math.atan2(y,x) + (Math.PI/2 - currentPosition([2]));
         //since pi/2 is apparently straight forwards??
-       // double currentAngle = Math.PI/2 - 
-    }
+
+    }*/
 
     public static void groupMotors(VictorSPX motor1, VictorSPX motor2){
         motor1.follow(motor2);
